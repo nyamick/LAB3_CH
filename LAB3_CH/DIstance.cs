@@ -82,5 +82,53 @@ namespace LAB3_CH
         {
             return instance / number;
         }
+
+        public DIstance To(MeasureType newType)
+        {
+            var newValue = this.value;
+            if (this.type == MeasureType.Ms)
+            {
+                switch (newType)
+                {
+                    case MeasureType.Ms:
+                        newValue = this.value;
+                        break;
+                    case MeasureType.KMh:
+                        newValue = this.value / 3.6 ;
+                        break;
+                    case MeasureType.Uz:
+                        newValue = this.value / 1.944;
+                        break;
+                    case MeasureType.Max:
+                        newValue = this.value / 333.000333;
+                        break;
+                }
+            }
+            else if (newType == MeasureType.Ms) 
+            {
+                switch (this.type) 
+                {
+                    case MeasureType.Ms:
+                        newValue = this.value;
+                        break;
+                    case MeasureType.KMh:
+                        newValue = this.value * 3.6 ; 
+                        break;
+                    case MeasureType.Uz:
+                        newValue = this.value * 1.944; 
+                        break;
+                    case MeasureType.Max:
+                        newValue = this.value * 333.000333; 
+                        break;
+                }
+            }
+            else 
+            {
+                newValue = this.To(MeasureType.Ms).To(newType).value;
+                
+            }
+            return new DIstance(newValue, newType);
+        }
     }
-}
+ }
+
