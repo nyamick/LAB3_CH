@@ -58,7 +58,7 @@ namespace LAB3_CH.Tests
         {
             DIstance distance;
 
-            distance = new DIstance(3.6, MeasureType.Ms);
+            distance = new DIstance(1/3.6, MeasureType.Ms);
             Assert.AreEqual("1 км/ч", distance.To(MeasureType.KMh).Verbose());
 
             distance = new DIstance(1.944*2, MeasureType.Ms);
@@ -73,14 +73,26 @@ namespace LAB3_CH.Tests
         {
             DIstance distance;
 
-            distance = new DIstance(1, MeasureType.KMh);
-            Assert.AreEqual("3,6 м/с", distance.To(MeasureType.Ms).Verbose());
+            distance = new DIstance(3.6, MeasureType.KMh);
+            Assert.AreEqual("1 м/с", distance.To(MeasureType.Ms).Verbose());
 
             distance = new DIstance(1, MeasureType.Uz);
             Assert.AreEqual("1,944 м/с", distance.To(MeasureType.Ms).Verbose());
 
             distance = new DIstance(1, MeasureType.Max);
             Assert.AreEqual("333,000333 м/с", distance.To(MeasureType.Ms).Verbose());
+        }
+        [TestMethod()]
+        public void AddSubKmMetersTest()
+        {
+            var ms = new DIstance(1, MeasureType.Ms);
+            var kmh = new DIstance(3.6, MeasureType.KMh);
+
+            Assert.AreEqual("2 м/с", (ms + kmh).Verbose());
+            Assert.AreEqual("7,2 км/ч", (kmh + ms).Verbose());
+
+            Assert.AreEqual("0 км/ч", (kmh - ms).Verbose());
+            Assert.AreEqual("0 м/с", (ms - kmh).Verbose());
         }
 
     }

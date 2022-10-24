@@ -94,7 +94,7 @@ namespace LAB3_CH
                         newValue = this.value;
                         break;
                     case MeasureType.KMh:
-                        newValue = this.value / 3.6 ;
+                        newValue = this.value * 3.6 ;
                         break;
                     case MeasureType.Uz:
                         newValue = this.value / 1.944;
@@ -112,7 +112,7 @@ namespace LAB3_CH
                         newValue = this.value;
                         break;
                     case MeasureType.KMh:
-                        newValue = this.value * 3.6 ; 
+                        newValue = this.value / 3.6 ; 
                         break;
                     case MeasureType.Uz:
                         newValue = this.value * 1.944; 
@@ -128,6 +128,17 @@ namespace LAB3_CH
                 
             }
             return new DIstance(newValue, newType);
+        }
+        public static DIstance operator +(DIstance instance1, DIstance instance2)
+        { 
+            return instance1 + instance2.To(instance1.type).value;
+        }
+
+        
+        public static DIstance operator -(DIstance instance1, DIstance instance2)
+        {
+            
+            return instance1 - instance2.To(instance1.type).value;
         }
     }
  }
