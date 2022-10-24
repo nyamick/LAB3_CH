@@ -29,6 +29,29 @@ namespace LAB3_CH.Tests
             distance = new DIstance(38, MeasureType.Max);
             Assert.AreEqual("38 Max", distance.Verbose());
         }
+        [TestMethod()]
+        public void SubNumberTest()
+        {
+            var distance = new DIstance(3, MeasureType.Ms);
+            distance = distance - 1.75;
+            Assert.AreEqual("1,25 м/с", distance.Verbose());
+        }
+
+        [TestMethod()]
+        public void MulByNumberTest()
+        {
+            var distance = new DIstance(3, MeasureType.Ms);
+            distance = distance * 3;
+            Assert.AreEqual("9 м/с", distance.Verbose());
+        }
+
+        [TestMethod()]
+        public void DivByNumberTest()
+        {
+            var distance = new DIstance(3, MeasureType.Ms);
+            distance = distance / 3;
+            Assert.AreEqual("1 м/с", distance.Verbose());
+        }
 
     }
 }

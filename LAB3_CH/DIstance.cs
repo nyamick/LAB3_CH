@@ -37,5 +37,50 @@ namespace LAB3_CH
             }
             return String.Format("{0} {1}", this.value, typeVerbose);
         }
+        public static DIstance operator +(DIstance instance, double number)
+        {
+            var newValue = instance.value + number;
+            var distance = new DIstance(newValue, instance.type);
+            return distance;
+        }
+        public static DIstance operator +(double number, DIstance instance)
+        {
+            return instance + number;
+        }
+        public static DIstance operator *(DIstance instance, double number)
+        {
+            var newValue = instance.value * number;
+            var distance = new DIstance(newValue, instance.type);
+            return distance;
+        }
+
+        public static DIstance operator *(double number, DIstance instance)
+        {
+            return instance * number;
+        }
+
+        public static DIstance operator -(DIstance instance, double number)
+        {
+            var newValue = instance.value - number;
+            var distance = new DIstance(newValue, instance.type);
+            return distance;
+        }
+
+        public static DIstance operator -(double number, DIstance instance)
+        {
+            return instance - number;
+        }
+
+        public static DIstance operator  /(DIstance instance, double number)
+        {
+            var newValue = instance.value / number;
+            var distance = new DIstance(newValue, instance.type);
+            return distance;
+        }
+
+        public static DIstance operator /(double number, DIstance instance)
+        {
+            return instance / number;
+        }
     }
 }
