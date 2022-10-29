@@ -80,6 +80,7 @@
             this.cmdFirstType.Name = "cmdFirstType";
             this.cmdFirstType.Size = new System.Drawing.Size(64, 28);
             this.cmdFirstType.TabIndex = 4;
+            this.cmdFirstType.SelectedIndexChanged += new System.EventHandler(this.cmdFirstType_SelectedIndexChanged);
             // 
             // cmdSecondType
             // 
@@ -88,6 +89,7 @@
             this.cmdSecondType.Name = "cmdSecondType";
             this.cmdSecondType.Size = new System.Drawing.Size(64, 28);
             this.cmdSecondType.TabIndex = 5;
+            this.cmdSecondType.SelectedIndexChanged += new System.EventHandler(this.cmdSecondType_SelectedIndexChanged);
             // 
             // cmdResultType
             // 
@@ -96,6 +98,7 @@
             this.cmdResultType.Name = "cmdResultType";
             this.cmdResultType.Size = new System.Drawing.Size(64, 28);
             this.cmdResultType.TabIndex = 6;
+            this.cmdResultType.SelectedIndexChanged += new System.EventHandler(this.cmdResultType_SelectedIndexChanged);
             // 
             // Form1
             // 
