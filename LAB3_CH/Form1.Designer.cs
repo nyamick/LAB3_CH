@@ -56,6 +56,7 @@
             this.txtSecond.Name = "txtSecond";
             this.txtSecond.Size = new System.Drawing.Size(125, 27);
             this.txtSecond.TabIndex = 2;
+            this.txtSecond.TextChanged += new System.EventHandler(this.txtSecond_TextChanged);
             // 
             // txtResult
             // 
