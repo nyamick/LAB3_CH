@@ -32,15 +32,23 @@
             this.txtFirst = new System.Windows.Forms.TextBox();
             this.txtSecond = new System.Windows.Forms.TextBox();
             this.txtResult = new System.Windows.Forms.TextBox();
+            this.cmdFirstType = new System.Windows.Forms.ComboBox();
+            this.cmdSecondType = new System.Windows.Forms.ComboBox();
+            this.cmdResultType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cmdOperation
             // 
             this.cmdOperation.FormattingEnabled = true;
-            this.cmdOperation.Location = new System.Drawing.Point(142, 62);
+            this.cmdOperation.Items.AddRange(new object[] {
+            "+",
+            "-"});
+            this.cmdOperation.Location = new System.Drawing.Point(233, 63);
             this.cmdOperation.Name = "cmdOperation";
             this.cmdOperation.Size = new System.Drawing.Size(53, 28);
             this.cmdOperation.TabIndex = 0;
+            this.cmdOperation.Text = "+";
+            this.cmdOperation.SelectedIndexChanged += new System.EventHandler(this.cmdOperation_SelectedIndexChanged);
             // 
             // txtFirst
             // 
@@ -60,16 +68,43 @@
             // 
             // txtResult
             // 
-            this.txtResult.Location = new System.Drawing.Point(142, 96);
+            this.txtResult.Location = new System.Drawing.Point(292, 129);
             this.txtResult.Name = "txtResult";
             this.txtResult.Size = new System.Drawing.Size(125, 27);
             this.txtResult.TabIndex = 3;
+            // 
+            // cmdFirstType
+            // 
+            this.cmdFirstType.FormattingEnabled = true;
+            this.cmdFirstType.Location = new System.Drawing.Point(423, 63);
+            this.cmdFirstType.Name = "cmdFirstType";
+            this.cmdFirstType.Size = new System.Drawing.Size(64, 28);
+            this.cmdFirstType.TabIndex = 4;
+            // 
+            // cmdSecondType
+            // 
+            this.cmdSecondType.FormattingEnabled = true;
+            this.cmdSecondType.Location = new System.Drawing.Point(423, 95);
+            this.cmdSecondType.Name = "cmdSecondType";
+            this.cmdSecondType.Size = new System.Drawing.Size(64, 28);
+            this.cmdSecondType.TabIndex = 5;
+            // 
+            // cmdResultType
+            // 
+            this.cmdResultType.FormattingEnabled = true;
+            this.cmdResultType.Location = new System.Drawing.Point(423, 129);
+            this.cmdResultType.Name = "cmdResultType";
+            this.cmdResultType.Size = new System.Drawing.Size(64, 28);
+            this.cmdResultType.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 187);
+            this.Controls.Add(this.cmdResultType);
+            this.Controls.Add(this.cmdSecondType);
+            this.Controls.Add(this.cmdFirstType);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.txtSecond);
             this.Controls.Add(this.txtFirst);
@@ -87,5 +122,8 @@
         private TextBox txtFirst;
         private TextBox txtSecond;
         private TextBox txtResult;
+        private ComboBox cmdFirstType;
+        private ComboBox cmdSecondType;
+        private ComboBox cmdResultType;
     }
 }

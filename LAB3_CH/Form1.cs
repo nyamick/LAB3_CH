@@ -5,6 +5,18 @@ namespace LAB3_CH
         public Form1()
         {
             InitializeComponent();
+            var measureItems = new string[] {
+
+            "м/с",
+            "км/ч",
+            "узлов",
+            "Max",};
+       
+
+            // привязываем списки значений к каждому комбобоксу
+            cmdFirstType.DataSource = new List<string>(measureItems);
+            cmdSecondType.DataSource = new List<string>(measureItems);
+            cmdResultType.DataSource = new List<string>(measureItems);
         }
         private void Calculate()
         {
@@ -17,8 +29,26 @@ namespace LAB3_CH
                 var firstDistance = new DIstance(firstValue, MeasureType.Ms);
                 var secondDistance = new DIstance(secondValue, MeasureType.Ms);
 
+                DIstance sumDistance;
+                switch (cmdOperation.Text)
+                {
+                    case "+":
+                        // если плюсик выбрали, то складываем
+                        sumDistance = firstDistance + secondDistance;
+                        break;
+                    case "-":
+                        // если минус, то вычитаем
+                        sumDistance = firstDistance - secondDistance;
+                        break;
+                    default:
+                        // а если что-то другое, то просто 0 выводим,
+                        // такое маловероятно, но надо указать иначе не скомпилится
+                        sumDistance = new DIstance(0, MeasureType.Ms);
+                        break;
+                }
 
-                var sumDistance = firstDistance + secondDistance;
+
+
 
 
                 txtResult.Text = sumDistance.Verbose();
@@ -35,6 +65,11 @@ namespace LAB3_CH
         }
 
         private void txtSecond_TextChanged(object sender, EventArgs e)
+        {
+            Calculate();
+        }
+
+        private void cmdOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
             Calculate();
         }
