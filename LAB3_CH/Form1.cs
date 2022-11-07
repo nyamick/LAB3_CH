@@ -57,9 +57,14 @@ namespace LAB3_CH
                 var firstDistance = new DIstance(firstValue, firstType);
                 var secondDistance = new DIstance(secondValue, secondType);
 
+                txtFirstCompare.Text = firstDistance.To(resultType).Verbose();
+                txtSecondCompare.Text = secondDistance.To(resultType).Verbose();
+
                 DIstance sumDistance;
+               
                 switch (cmdOperation.Text)
                 {
+                
                     case "+":
                         
                         sumDistance = firstDistance + secondDistance;
@@ -68,6 +73,7 @@ namespace LAB3_CH
                        
                         sumDistance = firstDistance - secondDistance;
                         break;
+                    
                     default:
                         
                         sumDistance = new DIstance(0, MeasureType.Ms);
@@ -114,6 +120,38 @@ namespace LAB3_CH
         private void cmdResultType_SelectedIndexChanged(object sender, EventArgs e)
         {
             Calculate();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var firstValue = double.Parse(txtFirst.Text);
+            var secondValue = double.Parse(txtSecond.Text);
+
+            MeasureType firstType = GetMeasureType(cmdFirstType);
+            MeasureType secondType = GetMeasureType(cmdSecondType);
+            MeasureType resultType = GetMeasureType(cmdResultType);
+
+
+            var firstDistance = new DIstance(firstValue, firstType);
+            var secondDistance = new DIstance(secondValue, secondType);
+
+            txtFirstCompare.Text = firstDistance.To(resultType).Verbose();
+            txtSecondCompare.Text = secondDistance.To(resultType).Verbose();
+            var first—ompare = double.Parse(txtFirstCompare.Text);
+            var secondCompare =double.Parse(txtSecondCompare.Text);
+            if (first—ompare < secondCompare)
+            {
+                label1.Text = "<";
+            }
+            else if (first—ompare > secondCompare)
+            {
+                label1.Text = ">";
+            }
+            else
+            {
+                label1.Text = "=";
+            }
+
         }
     }
 }

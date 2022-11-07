@@ -37,6 +37,13 @@ namespace LAB3_CH
             }
             return String.Format("{0} {1}", this.value, typeVerbose);
         }
+        public override bool Equals(Object obj)
+        {
+            var p = obj as DIstance;
+            if (p == null)
+                return false;
+            return (value == p.value) && (type == p.type);
+        }
         public static DIstance operator +(DIstance instance, double number)
         {
             var newValue = instance.value + number;
@@ -139,6 +146,10 @@ namespace LAB3_CH
         {
             
             return instance1 - instance2.To(instance1.type).value;
+        }
+        public bool Compare(DIstance instance1, DIstance instance2)
+        {
+            return instance1.value > instance2.value;
         }
     }
  }

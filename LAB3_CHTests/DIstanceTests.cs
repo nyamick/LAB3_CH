@@ -5,76 +5,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LAB3_CH;
 
 namespace LAB3_CH.Tests
 {
     [TestClass()]
-    public class DIstanceTests
+    public class LengthTests
     {
 
-
         [TestMethod()]
-        public void VerboseTest()
+        public void AddNumberTest()
         {
-            // тестируем все четыре типа
-            var distance = new DIstance(38, MeasureType.Ms);
-            Assert.AreEqual("38 м/с", distance.Verbose());
-
-            distance = new DIstance(38, MeasureType.KMh);
-            Assert.AreEqual("38 км/ч", distance.Verbose());
-
-            distance = new DIstance(38, MeasureType.Uz);
-            Assert.AreEqual("38 узлов", distance.Verbose());
-
-            distance = new DIstance(38, MeasureType.Max);
-            Assert.AreEqual("38 Max", distance.Verbose());
+            var distance = new DIstance(1, MeasureType.Ms);
+            distance = distance + 2;
+            Assert.AreEqual(new DIstance(3, MeasureType.Ms), distance);
         }
+      
         [TestMethod()]
         public void SubNumberTest()
         {
             var distance = new DIstance(3, MeasureType.Ms);
-            distance = distance - 1.75;
-            Assert.AreEqual("1,25 м/с", distance.Verbose());
+            distance = distance - 2;
+            Assert.AreEqual(new DIstance(1, MeasureType.Ms), distance);
         }
-
         [TestMethod()]
-        public void MulByNumberTest()
-        {
-            var distance = new DIstance(3, MeasureType.Ms);
-            distance = distance * 3;
-            Assert.AreEqual("9 м/с", distance.Verbose());
-        }
-
-        [TestMethod()]
-        public void DivByNumberTest()
-        {
-            var distance = new DIstance(3, MeasureType.Ms);
-            distance = distance / 3;
-            Assert.AreEqual("1 м/с", distance.Verbose());
-        }
-
-        [TestMethod()]
-        public void MeterToAnyTest()
+        public void ConvertToTest()
         {
             DIstance distance;
-
-            distance = new DIstance(1/3.6, MeasureType.Ms);
-            Assert.AreEqual("1 км/ч", distance.To(MeasureType.KMh).Verbose());
-
-            distance = new DIstance(1.944*2, MeasureType.Ms);
-            Assert.AreEqual("2 узлов", distance.To(MeasureType.Uz).Verbose());
-
-            distance = new DIstance(333.000333 * 3, MeasureType.Ms);
-            Assert.AreEqual("3 Max", distance.To(MeasureType.Max).Verbose());
-        }
-
-        [TestMethod()]
-        public void AnyToMeterTest()
-        {
-            DIstance distance;
-
-            distance = new DIstance(3.6, MeasureType.KMh);
-            Assert.AreEqual("1 м/с", distance.To(MeasureType.Ms).Verbose());
+            distance = new DIstance(1, MeasureType.KMh);
+            Assert.AreEqual("0,2777777777777778 м/с", distance.To(MeasureType.Ms).Verbose());
 
             distance = new DIstance(1, MeasureType.Uz);
             Assert.AreEqual("1,944 м/с", distance.To(MeasureType.Ms).Verbose());
@@ -85,15 +44,30 @@ namespace LAB3_CH.Tests
         [TestMethod()]
         public void AddSubKmMetersTest()
         {
-            var ms = new DIstance(1, MeasureType.Ms);
-            var kmh = new DIstance(3.6, MeasureType.KMh);
+       
+            DIstance Test1 = new DIstance(10, MeasureType.KMh);
+            DIstance Test2 = new DIstance(2, MeasureType.Ms);
+            DIstance Test3 = Test1 + Test2;
+            Assert.AreEqual(new DIstance(17.2, MeasureType.KMh), Test3);
 
-            Assert.AreEqual("2 м/с", (ms + kmh).Verbose());
-            Assert.AreEqual("7,2 км/ч", (kmh + ms).Verbose());
 
-            Assert.AreEqual("0 км/ч", (kmh - ms).Verbose());
-            Assert.AreEqual("0 м/с", (ms - kmh).Verbose());
+
+           
         }
-
+        [TestMethod()]
+        public void AddMultiplicateTest()
+        {
+            var distance = new DIstance(4, MeasureType.Ms);
+            distance = distance * 2;
+            Assert.AreEqual(new DIstance(8, MeasureType.Ms), distance);
+        }
+        [TestMethod()]
+        public void AddСomparisonKmMetersTest2()
+        {
+            var firstSpeed = new DIstance(10, MeasureType.Ms);
+            var secondSpeed = new DIstance(37, MeasureType.KMh);
+            var result = firstSpeed.Compare(firstSpeed, secondSpeed);
+            Assert.AreEqual(false, result);
+        }
     }
 }
